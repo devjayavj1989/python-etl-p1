@@ -1,5 +1,6 @@
 import psycopg2
 from config import pgsql_config
+import csv
 
 def query(query, values=None):
     # Connect to your postgres DB
@@ -12,6 +13,108 @@ def query(query, values=None):
         cursor.execute(query)
         # return query results
         return cursor.fetchall()
+def csv_import():
+     cursor1= connect()
+     with open('/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/AnnualTicketSales.csv', 'r',newline='') as f:
+         reader = csv.reader(f,delimiter=',')
+         next(reader) # Skip the header row.
+         for row in reader:
+            # print (row)
+            cursor1.execute(
+           "INSERT INTO pet1.AnnualTicketsSales VALUES (%s,%s,%s,%s,%s,%s)",row)
+
+
+
+def csv_import1():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/HighestGrossers.csv',
+            'r') as f:
+        reader = csv.reader(f,delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+          #  print(row)
+           cursor1.execute("INSERT INTO pet1.HighestGrossers VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",row)
+
+def csv_import2():
+        cursor1 = connect()
+        with open(
+                '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/PopularCreativeTypes.csv',
+                'r') as f:
+            reader = csv.reader(f, delimiter=',')
+            next(reader)  # Skip the header row.
+            for row in reader:
+                #  print(row)
+                cursor1.execute("INSERT INTO pet1.PopularCreativeTypes VALUES (%s,%s,%s,%s,%s,%s)", row)
+
+
+def csv_import3():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/TopDistributors.csv',
+            'r') as f:
+        reader = csv.reader(f, delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+            #  print(row)
+            cursor1.execute("INSERT INTO pet1.TopDistributors VALUES (%s,%s,%s,%s,%s,%s)", row)
+
+def csv_import4():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/TopGenres.csv',
+            'r') as f:
+        reader = csv.reader(f, delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+            #  print(row)
+            cursor1.execute("INSERT INTO pet1.TopGenres VALUES (%s,%s,%s,%s,%s,%s)", row)
+
+def csv_import5():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/TopGrossingRatings.csv',
+            'r') as f:
+        reader = csv.reader(f, delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+            #  print(row)
+            cursor1.execute("INSERT INTO pet1.TopGrossingRatings VALUES (%s,%s,%s,%s,%s,%s)", row)
+
+def csv_import6():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/TopGrossingSources.csv',
+            'r') as f:
+        reader = csv.reader(f, delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+            #  print(row)
+            cursor1.execute("INSERT INTO pet1.TopGrossingSources VALUES (%s,%s,%s,%s,%s,%s)", row)
+
+
+def csv_import7():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/TopProductionMethods.csv',
+            'r') as f:
+        reader = csv.reader(f, delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+            #  print(row)
+            cursor1.execute("INSERT INTO pet1.TopProductionMethods VALUES (%s,%s,%s,%s,%s,%s)", row)
+
+def csv_import8():
+    cursor1 = connect()
+    with open(
+            '/Users/yorkmac040/PycharmProjects/jaya/mohan/python-etl-p1/datasets/hollywood-theatrical-market-synopsis-1995-to-2021/WideReleasesCount.csv',
+            'r') as f:
+        reader = csv.reader(f, delimiter=',')
+        next(reader)  # Skip the header row.
+        for row in reader:
+          #print(row)
+            cursor1.execute("INSERT INTO pet1.WideReleasesCount VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", row)
+
 
 def connect():
     connection = psycopg2.connect(f"""
