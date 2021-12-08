@@ -21,10 +21,10 @@ if __name__ == '__main__':
     # select data
     results = query(sql.test_select);
     print("results: ", results)
-    for i in results:
-      string value = value+i
-      final= [int[s] for s in value.split() if s.isdigit()]
-      print(final)
+    #for i in results:
+    #  string value = value+i
+     # final= [int[s] for s in value.split() if s.isdigit()]
+     # print(final)
 
     #query(sql.test_CreateWideReleasesCount,["creating table9"])
     #query(sql.test_CreateTopProductionMethodsTable,["creating table8"])
