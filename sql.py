@@ -1,24 +1,20 @@
 test_select = ('''
   SELECT total_box_office
-  FROM pet1.AnnualTicketsSales;
+  FROM petl1.AnnualTicketsSales;
 ''')
 
-test_insert = ('''
-  INSERT INTO public.test_table
-  VALUES(%s);
-''')
-test_CreateSchema=(''' create schema pet1''')
 
-test_CreateAnnualTicketsSalesTable =(''' create table pet1.AnnualTicketsSales(
+test_CreateSchema=(''' create schema if not exists petl1''')
+
+test_CreateAnnualTicketsSalesTable =(''' create table if not exists petl1.AnnualTicketsSales(
 YEAR text,
 TICKETS_SOLD TEXT,
 TOTAL_BOX_OFFICE TEXT,
 TOTAL_INFLATION_ADJUSTED_BOX_OFFICE TEXT,
-AVERAGE_TICKET_PRICE varchar,
-null_column text)
+AVERAGE_TICKET_PRICE varchar)
 ''')
 
-test_CreateHighestGrossersTable = ('''create table pet1.HighestGrossers(
+test_CreateHighestGrossersTable = ('''create table if not exists petl1.HighestGrossers(
                                    year text,
                                    movie text,
                                    genre text,
@@ -29,7 +25,7 @@ test_CreateHighestGrossersTable = ('''create table pet1.HighestGrossers(
                                    tickets_sold text
                                    )''')
 
-test_CreatePopularCreativeTypes=(''' create table pet1.popularCreativeTypes(
+test_CreatePopularCreativeTypes=(''' create table if not exists petl1.popularCreativeTypes(
 rank text,
 creative_types text,
 movies text,
@@ -38,7 +34,7 @@ average_gross text,
 market_share text
 )''')
 
-test_CreateTopDistributors=(''' create table pet1.TopDistributors(
+test_CreateTopDistributors=(''' create table if not exists petl1.TopDistributors(
 rank text,
 distributors text,
 movies text,
@@ -48,7 +44,7 @@ market_share text
 )
 ''')
 
-test_CreateTopGenres=(''' create table pet1.TopGenres(
+test_CreateTopGenres=(''' create table if not exists petl1.TopGenres(
 rank text,
 genres text,
 movies text,
@@ -57,7 +53,7 @@ average_gross text,
 market_share text
 )
 ''')
-test_CreateTopGrossingRatings=('''create table pet1.TopGrossingRatings(
+test_CreateTopGrossingRatings=('''create table if not exists petl1.TopGrossingRatings(
 rank text,
 Mpaa_ratings text,
 Movies text,
@@ -66,7 +62,7 @@ average_gross text,
 market_share text
 )''')
 
-test_CreateTopGrossingSourceTable=('''create table pet1.TopGrossingSources(
+test_CreateTopGrossingSourceTable=('''create table if not exists petl1.TopGrossingSources(
 rank text,
 sources text,
 Movies text,
@@ -75,7 +71,7 @@ average_gross text,
 market_share text
 )''')
 
-test_CreateTopProductionMethodsTable=('''create table pet1.TopProductionMethods(
+test_CreateTopProductionMethodsTable=('''create table if not exists petl1.TopProductionMethods(
 rank text,
 production_methods text,
 Movies text,
@@ -84,7 +80,7 @@ average_gross text,
 market_share text
 )''')
 
-test_CreateWideReleasesCount=(''' create table pet1.WideReleasesCount(
+test_CreateWideReleasesCount=(''' create table if not exists petl1.WideReleasesCount(
 year text,
 Warner_Bros text,
 walt_disney text,
@@ -93,7 +89,5 @@ paramount text,
 sony_pictures text,
 universal text,
 total_major_6 text,
-total_other_studios text,
-null_column text
-)
+total_other_studios text)
 ''')
